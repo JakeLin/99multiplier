@@ -16,13 +16,9 @@ const SubContainer = styled.div`
 `;
 
 const FormulaRow = styled.div`
-  padding: 12px 0;
+  padding: 48px 0;
   display: flex;
   justify-content: space-between;
-`;
-
-const Divider = styled.div`
-  height: 30px;
 `;
 
 const NumberRow = styled.div`
@@ -101,13 +97,12 @@ const App : React.FC  = () => {
     <Container>
       <SubContainer>
         <FormulaRow>
-          <Chip label={leftNumber} sx={{ width: 40, height: 40 }} color="primary" />
-          <Chip label="X" sx={{ width: 40, height: 40 }} color="primary" variant="outlined" />
-          <Chip label={rightNumber} sx={{ width: 40, height: 40 }} color="primary" />
-          <Chip label="=" sx={{ width: 40, height: 40 }} color="primary" variant="outlined" />
-          <Chip label={answer} sx={{ width: 40, height: 40 }} color="primary" />
+          <Chip label={leftNumber} sx={{ width: 50, height: 50, fontSize: 20 }} color="primary" />
+          <Chip label="X" sx={{ width: 50, height: 50 }} color="primary" variant="outlined" />
+          <Chip label={rightNumber} sx={{ width: 50, height: 50, fontSize: 20 }} color="primary" />
+          <Chip label="=" sx={{ width: 50, height: 50 }} color="primary" variant="outlined" />
+          <Chip label={answer} sx={{ width: 50, height: 50, fontSize: 20 }} color="primary" />
         </FormulaRow>
-        <Divider />
         <NumberRow>
           <Button variant="outlined" sx={{ width: 80, height: 80 }} onClick={ () => onNumberPressed(1)}>1</Button>
           <Button variant="outlined" sx={{ width: 80, height: 80 }} onClick={ () => onNumberPressed(2)}>2</Button>
