@@ -24,7 +24,7 @@ const FormulaRow = styled.div`
 const NumberRow = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 12px;
 `;
 
 const App : React.FC  = () => {
@@ -65,7 +65,7 @@ const App : React.FC  = () => {
       });
     }
  
-    checkAnswer();  
+    checkAnswer();
   };
 
   const onNumberDeleted = () => {
