@@ -27,7 +27,7 @@ const NumberRow = styled.div`
   margin-top: 12px;
 `;
 
-const App : React.FC  = () => {
+const App = () => {
   const [leftNumber, setLeftNumber] = useState(0);
   const [rightNumber, setRightNumber] = useState(0);
   const [answer, setAnswer, answerRef] = useState('');
@@ -80,6 +80,10 @@ const App : React.FC  = () => {
     }
   };
 
+  const onNumberClear = () => {
+    setAnswer('??');
+  };
+
   const onSuccessMessageClose = () => {
     setIsShowingSuccessMessage(false);
     startGame();
@@ -120,6 +124,7 @@ const App : React.FC  = () => {
         </NumberRow>
         <NumberRow>
           <Button variant="outlined" sx={{ width: 80, height: 80 }} onClick={ () => onNumberPressed(0)}>0</Button>
+          <Button variant="outlined" sx={{ width: 80, height: 80 }} onClick={onNumberClear}>CLR</Button>
           <Button variant="outlined" sx={{ width: 80, height: 80 }} onClick={onNumberDeleted}>⌫</Button>
         </NumberRow>
         <Snackbar open={isShowingSuccessMessage} autoHideDuration={1000} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={onSuccessMessageClose} >
