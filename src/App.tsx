@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import useState from 'react-usestateref';
 import styled from 'styled-components';
 import { Chip, Button, Snackbar, Alert } from '@mui/material';
@@ -109,7 +109,7 @@ const App = () => {
 
   useEffect(() => {
     startGame();
-  }, []);
+  }, [startGame]);
 
   useEffect(() => {
     const startTime = moment();
