@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import useState from 'react-usestateref';
 import styled from 'styled-components';
 import { Chip, Button, Snackbar, Alert } from '@mui/material';
+import moment from 'moment';
 
 const Container = styled.div`
   display: flex;
@@ -13,6 +14,10 @@ const Container = styled.div`
 
 const SubContainer = styled.div`
   width: 100%;
+`;
+
+const ResultRow = styled.div`
+  padding-top: 12px;
 `;
 
 const FormulaRow = styled.div`
@@ -31,6 +36,9 @@ const App = () => {
   const [leftNumber, setLeftNumber] = useState(0);
   const [rightNumber, setRightNumber] = useState(0);
   const [answer, setAnswer, answerRef] = useState('');
+  const [passedNumber, setPassedNumber] = useState(0);
+  const [failedNumber, setFailedNumber] = useState(0);
+  const [timePassed, setTimePassed] = useState('00:00');
   const [isShowingSuccessMessage, setIsShowingSuccessMessage] = useState(false);
   const [isShowingErrorMessage, setIsShowingErrorMessage] = useState(false);
 
@@ -86,20 +94,40 @@ const App = () => {
 
   const onSuccessMessageClose = () => {
     setIsShowingSuccessMessage(false);
+    setPassedNumber((previousValue) => {
+      return previousValue + 1;
+    });
     startGame();
   };
 
   const onErrorMessageClose = () => {
     setIsShowingErrorMessage(false);
+    setFailedNumber((previousValue) => {
+      return previousValue + 1;
+    });
   };
 
   useEffect(() => {
     startGame();
   }, []);
 
+  useEffect(() => {
+    const startTime = moment();
+    const timer = setInterval(() => {
+      const secondsDiff = moment().diff(startTime, 'seconds');
+      console.log(secondsDiff);
+      setTimePassed(moment.utc(secondsDiff * 1000).format("mm:ss"));
+    }, 1000);
+  
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Container>
       <SubContainer>
+        <ResultRow>
+          {passedNumber} passed vs. {failedNumber} failed. Time spent: {timePassed}
+        </ResultRow>
         <FormulaRow>
           <Chip label={leftNumber} sx={{ width: 50, height: 50, fontSize: 20 }} color="primary" />
           <Chip label="X" sx={{ width: 50, height: 50 }} color="primary" variant="outlined" />
