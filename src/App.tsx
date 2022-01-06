@@ -46,11 +46,11 @@ const App = () => {
     return Math.floor(Math.random() * max); 
   };
 
-  const startGame = useCallback(() => {
+  const startGame = () => {
     setLeftNumber(getRandomPositiveInt(10));
     setRightNumber(getRandomPositiveInt(10));
     setAnswer('??');
-  }, [true]); // pass a const `true` to avoid the linting error
+  };
 
   const checkAnswer = () => {
     if (answerRef.current === (leftNumber * rightNumber).toString()) {
@@ -109,13 +109,12 @@ const App = () => {
 
   useEffect(() => {
     startGame();
-  }, [startGame]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const startTime = moment();
     const timer = setInterval(() => {
       const secondsDiff = moment().diff(startTime, 'seconds');
-      console.log(secondsDiff);
       setTimePassed(moment.utc(secondsDiff * 1000).format("mm:ss"));
     }, 1000);
   
