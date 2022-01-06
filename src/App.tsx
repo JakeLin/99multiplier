@@ -50,7 +50,7 @@ const App = () => {
     setLeftNumber(getRandomPositiveInt(10));
     setRightNumber(getRandomPositiveInt(10));
     setAnswer('??');
-  }, []);
+  }, [true]); // pass a const `true` to avoid the linting error
 
   const checkAnswer = () => {
     if (answerRef.current === (leftNumber * rightNumber).toString()) {
