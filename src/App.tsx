@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import useState from 'react-usestateref';
 import styled from 'styled-components';
 import { Chip, Button, Snackbar, Alert } from '@mui/material';
@@ -46,11 +46,11 @@ const App = () => {
     return Math.floor(Math.random() * max); 
   };
 
-  const startGame = () => {
+  const startGame = useCallback(() => {
     setLeftNumber(getRandomPositiveInt(10));
     setRightNumber(getRandomPositiveInt(10));
     setAnswer('??');
-  };
+  }, []);
 
   const checkAnswer = () => {
     if (answerRef.current === (leftNumber * rightNumber).toString()) {
