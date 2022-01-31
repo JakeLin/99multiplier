@@ -32,7 +32,7 @@ const NumberRow = styled.div`
   margin-top: 12px;
 `;
 
-const App = () => {
+const Multiplication99 = () => {
   const [leftNumber, setLeftNumber] = useState(0);
   const [rightNumber, setRightNumber] = useState(0);
   const [answer, setAnswer, answerRef] = useState('');
@@ -169,4 +169,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Multiplication99;
